@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015 Magento. All rights reserved.
+ * Copyright 2018 Magento. All rights reserved.
  */
 
 namespace Rce\Calculator\Api\Data;
