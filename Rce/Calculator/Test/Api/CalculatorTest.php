@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2018 Magento. All rights reserved.
+ * Copyright 2015 Magento. All rights reserved.
  */
 
 namespace Rce\Calculator\Test\Api;
@@ -27,17 +27,26 @@ class CalculatorTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = [
+        $requestDataAdd = [
             'left' => 1.42,
             'right' => 2.4567,
             'operator' => 'add',
             'precision' => 2
         ];
 
-        $response = $this->_webApiCall($serviceInfo, $requestData);
+        $requestDataValidation = [
+            'left' => 1.42,
+            'right' => 2.4567,
+            'operator' => 'none',
+        ];
 
-        $this->assertEquals('Ok.', $response['status']);
-        $this->assertEquals(3.88, $response['result']);
+        $responseAdd = $this->_webApiCall($serviceInfo, $requestDataAdd);
+        $responseDataValidation = $this->_webApiCall($serviceInfo, $requestDataValidation);
+
+        $this->assertEquals('Ok.', $responseAdd['status']);
+        $this->assertEquals(3.88, $responseAdd['result']);
+        $this->assertEquals('Validation error.', $responseDataValidation['status']);
+        $this->assertEquals(null, $responseDataValidation['result']);
     }
 
 }
