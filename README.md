@@ -47,3 +47,11 @@ Response is JSON object:
 Example of usage:
 
 curl -d '{"left":1.43, "right": 2.4567, "operator": "add", "precision": 2}' -H 'Content-Type: application/json' http://server.url/index.php/rest/V1/rce/calculator
+
+
+Unit test:
+
+If environment is configured as explained here: http://devdocs.magento.com/guides/v2.0/get-started/web-api-functional-testing.html
+Test could be started with command:
+
+ phpunit -c dev/tests/api-functional/phpunit.xml --filter testCalculate
